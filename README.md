@@ -20,3 +20,9 @@ The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and i
 6. [MUSIC](...)
 7. [ESPRIT](...)
 8. [References](...)
+
+
+### References
+
+1. Van Trees, H. L., Optimum Array Processing: Part IV of Detection, Estimation, and Modulation Theory. New York: John Wiley & Sons, 2002. DOI: 10.1002/0471221104.
+2. Wulf-Dieter Wirth - Radar Techniques Using Array Antennas 2nd - 2013
