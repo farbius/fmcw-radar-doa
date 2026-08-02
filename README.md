@@ -12,7 +12,7 @@ See the project homepage [here](...) for examples, too.
 
 The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and is read-only and rendered in real-time. Interactive notebooks + examples can be downloaded by cloning!
 
-1. [Signal Model](notebooks/01_signal_model.ipynb)
+1. [Signal Model]([notebooks/01_signal_model.ipynb](https://nbviewer.org/github/<username>/fmcw-radar-doa/blob/main/notebooks/01_signal_model.ipynb))
 2. [Covariance Matrix](...)
 3. [Spatial FFT Beamformer](...)
 4. [Bartlett Beamformer](...)
