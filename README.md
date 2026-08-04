@@ -14,13 +14,13 @@ The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and i
 
 1. **Signal Model** ·
    [Read chapter](https://farbius.github.io/fmcw-radar-doa/01_signal_model.html) ·
-   [View notebook](https://farbius.github.io/fmcw-radar-doa/notebooks/01_signal_model.ipynb)
+   [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/01_signal_model.ipynb)
 
    The narrowband array signal model used for direction-of-arrival (DoA) estimation in FMCW radar
 
 2. **Covariance Matrix** ·
    [Read chapter](https://farbius.github.io/fmcw-radar-doa/02_covariance_matrix.html) ·
-   [View notebook](https://farbius.github.io/fmcw-radar-doa/notebooks/02_covariance_matrix.ipynb)
+   [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/02_covariance_matrix.ipynb)
 
    Spatial covariance estimation, matrix interpretation, forward-backward averaging, diagonal loading, eigendecomposition, and source-number estimation for covariance-based DoA processing
 
