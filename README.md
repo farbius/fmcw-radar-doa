@@ -13,14 +13,14 @@ See the project homepage [here](https://www.fpga-radar.com/fmcw-radar-doa) for e
 The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and is read-only and rendered in real-time. Interactive notebooks + examples can be downloaded by cloning!
 
 1. **Signal Model** ·
-   [Read chapter](https://farbius.github.io/fmcw-radar-doa/html/01_signal_model.html) ·
-   [View notebook](notebooks/01_signal_model.ipynb)
+   [Read chapter](https://farbius.github.io/fmcw-radar-doa/01_signal_model.html) ·
+   [View notebook](https://farbius.github.io/fmcw-radar-doa/notebooks/01_signal_model.ipynb)
 
    The narrowband array signal model used for direction-of-arrival (DoA) estimation in FMCW radar
 
 2. **Covariance Matrix** ·
-   [Read chapter](https://farbius.github.io/fmcw-radar-doa/html/02_covariance_matrix.html) ·
-   [View notebook](notebooks/02_covariance_matrix.ipynb)
+   [Read chapter](https://farbius.github.io/fmcw-radar-doa/02_covariance_matrix.html) ·
+   [View notebook](https://farbius.github.io/fmcw-radar-doa/notebooks/02_covariance_matrix.ipynb)
 
    Spatial covariance estimation, matrix interpretation, forward-backward averaging, diagonal loading, eigendecomposition, and source-number estimation for covariance-based DoA processing
 
@@ -57,7 +57,7 @@ The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and i
 ### helpers
 
 ```sh
-jupyter nbconvert --to html --template classic .\notebooks\xx_sample_page.ipynb --output-dir .\html
-jupyter nbconvert --to html --template classic .\notebooks\01_signal_model.ipynb --output-dir .\html
-jupyter nbconvert --to html --template classic .\notebooks\02_covariance_matrix.ipynb --output-dir .\html
+jupyter nbconvert --to html --template classic .\notebooks\xx_sample_page.ipynb --output-dir .\docs
+jupyter nbconvert --to html --template classic .\notebooks\01_signal_model.ipynb --output-dir .\docs
+jupyter nbconvert --to html --template classic .\notebooks\02_covariance_matrix.ipynb --output-dir .\docs
 ```
