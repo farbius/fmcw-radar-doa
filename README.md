@@ -24,25 +24,29 @@ The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and i
 
    Spatial covariance estimation, matrix interpretation, forward-backward averaging, diagonal loading, eigendecomposition, and source-number estimation for covariance-based DoA processing
 
-3. **Spatial FFT Beamformer** ·
-   [Read chapter](...) ·
-   [View notebook](...)
+3. **FMCW MIMO** ·
+   [Read chapter](https://farbius.github.io/fmcw-radar-doa/03_fmcw_mimo.html) ·
+   [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/03_fmcw_mimo.ipynb)
 
-4. **Bartlett Beamformer** ·
-   [Read chapter](...) ·
-   [View notebook](...)
+4. **Spatial FFT Beamformer** ·
+   [Read chapter](https://farbius.github.io/fmcw-radar-doa/04_fft_beamformer.html) ·
+   [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/04_fft_beamformer.ipynb)
 
-5. **Capon MVDR Beamformer** ·
-   [Read chapter](...) ·
-   [View notebook](...)
+5. **Bartlett Beamformer** ·
+   [Read chapter](https://farbius.github.io/fmcw-radar-doa/05_bartlett.html) ·
+   [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/05_bartlett.ipynb)
 
-6. **MUSIC** ·
-   [Read chapter](...) ·
-   [View notebook](...)
+6. **Capon MVDR Beamformer** ·
+   [Read chapter](https://farbius.github.io/fmcw-radar-doa/06_capon_mvdr.html) ·
+   [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/06_capon_mvdr.ipynb)
 
-7. **ESPRIT** ·
-   [Read chapter](...) ·
-   [View notebook](...)
+7. **MUSIC** ·
+   [Read chapter](https://farbius.github.io/fmcw-radar-doa/07_music.html) ·
+   [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/07_music.ipynb)
+
+8. **ESPRIT** ·
+   [Read chapter](https://farbius.github.io/fmcw-radar-doa/08_esprit.html) ·
+   [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/08_esprit.ipynb)
 
 
 
@@ -58,6 +62,4 @@ The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and i
 
 ```sh
 jupyter nbconvert --to html --template classic .\notebooks\xx_sample_page.ipynb --output-dir .\docs
-jupyter nbconvert --to html --template classic .\notebooks\01_signal_model.ipynb --output-dir .\docs
-jupyter nbconvert --to html --template classic .\notebooks\02_covariance_matrix.ipynb --output-dir .\docs
 ```
