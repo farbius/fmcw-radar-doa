@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop"
 $notebooks = @(
     "01_signal_model.ipynb",
     "02_covariance_matrix.ipynb",
-    "03_fmcw_mimo_flow.ipynb",
+    "03_fmcw_mimo.ipynb",
     "04_fft_beamformer.ipynb",
     "05_bartlett.ipynb",
     "06_capon_mvdr.ipynb",

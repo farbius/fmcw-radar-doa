@@ -2,6 +2,8 @@
 
 Jupyter notebooks covering the mathematical foundations, implementation, and analysis of direction-of-arrival estimation methods for FMCW radar.
 
+![doa diagram](images/blockdiagram.png)
+
 The repository is intended as a compact engineering recap of array signal processing for FMCW radar. Each notebook combines key formulas, short Python implementations, numerical examples, and practical observations.
 
 The main focus is on understanding how the algorithms work, how their assumptions affect the results, and how they can be applied to radar data.
