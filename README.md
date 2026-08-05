@@ -1,12 +1,14 @@
 # FMCW Radar DoA Estimation
 
-Jupyter notebooks covering the mathematical foundations, implementation, and analysis of direction-of-arrival estimation methods for FMCW radar.
+This repository provides a set of Jupyter notebooks covering the mathematical foundations, Python implementation, and practical analysis of direction-of-arrival estimation for automotive FMCW MIMO radar.
 
-![doa diagram](images/blockdiagram.png)
+The covered methods include conventional beamforming with the Spatial FFT and Bartlett beamformer, adaptive beamforming with Capon/MVDR, and subspace-based estimation with MUSIC and ESPRIT.
 
-The repository is intended as a compact engineering recap of array signal processing for FMCW radar. Each notebook combines key formulas, short Python implementations, numerical examples, and practical observations.
+![DoA estimation methods](images/blockdiagram.png)
 
-The main focus is on understanding how the algorithms work, how their assumptions affect the results, and how they can be applied to radar data.
+The notebooks introduce the FMCW MIMO signal model, snapshot extraction, covariance-matrix estimation and preprocessing, and the assumptions behind each DoA algorithm. Key formulas are supported by compact Python implementations, numerical examples, and practical engineering observations.
+
+The theoretical foundations are validated using real measurements from a Texas Instruments AWR2243 radar configured as a two-transmitter, four-receiver TDM MIMO system, forming an eight-element virtual uniform linear array.
 
 ## Contents
 
