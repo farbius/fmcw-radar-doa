@@ -21,7 +21,7 @@ The validation datasets were collected in two measurement campaigns:
 
 ### 1. DoA estimation with two static corner reflectors
 
-The first campaign evaluates angular resolution in controlled broadside and off-boresight scenarios using two static corner reflectors. The corresponding workshop and dataset are available [here](...).
+The first campaign evaluates angular resolution in controlled broadside and off-boresight scenarios using two static corner reflectors. The corresponding workshop and dataset are available [here](...) (coming soon).
 
 <p align="center">
   <img
@@ -37,7 +37,7 @@ The first campaign evaluates angular resolution in controlled broadside and off-
 
 ### 2. DoA estimation in a dynamic street scene
 
-The second campaign evaluates DoA estimation in a dynamic automotive street scene using TDM MIMO measurements. The corresponding workshop and dataset are available [here](...).
+The second campaign evaluates DoA estimation in a dynamic automotive street scene using TDM MIMO measurements. The corresponding workshop and dataset are available [here](...) (coming soon).
 
 
 ## Contents
