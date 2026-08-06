@@ -13091,7 +13091,99 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=1f18f6c4"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contents">Contents<a class="anchor-link" href="#Contents">¶</a></h2>
+<h2 id="Contents">Contents<a class="anchor-link" href="#Contents">¶</a></h2><ol>
+<li><a href="#capon-mvdr-fundamentals">Capon/MVDR Fundamentals</a></li>
+<li><a href="#capon-mvdr-performance">Capon/MVDR Performance</a><ol>
+<li><a href="#forward-backward-averaging">Forward–Backward Averaging</a></li>
+<li><a href="#diagonal-loading">Diagonal Loading</a></li>
+<li><a href="#angular-resolution-and-model-mismatch-sensitivity">Angular Resolution and Model-Mismatch Sensitivity</a></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=1f3caca5"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id="capon-mvdr-fundamentals"></a></p>
+<h2 id="Capon/MVDR-Fundamentals">Capon/MVDR Fundamentals<a class="anchor-link" href="#Capon/MVDR-Fundamentals">¶</a></h2><p>The Capon, or Minimum Variance Distortionless Response (MVDR), beamformer is an adaptive spatial filtering method. Its weights depend on the estimated covariance matrix and therefore adapt to the measured spatial environment.</p>
+<p>The angular scan can be interpreted as a bank of spatial FIR filters. The same array snapshot $\mathbf{x}[k]$ is applied to every branch, while the $i$-th branch uses weights $\mathbf{w}(\theta_i)$ corresponding to the steering direction $\theta_i$.</p>
+<p align="center">
+<img alt="Capon MVDR beamformer on a steering-angle grid" src="images/capon_mvdr_steering_grid.png" width="60%"/>
+</p>
+<p>The output of the $i$-th spatial filter is</p>
+<p>$$
+y(\theta_i,k)
+=
+\mathbf{w}^{H}(\theta_i)\mathbf{x}[k].
+$$</p>
+<p>The spatial spectrum is obtained from the average output power of each filter:</p>
+<p>$$
+P(\theta_i)
+=
+\mathbb{E}\!\left[
+\left|y(\theta_i,k)\right|^2
+\right].
+$$</p>
+<p>Substituting the filter output gives</p>
+<p>$$
+P(\theta_i)
+=
+\mathbb{E}\!\left[
+\mathbf{w}^{H}(\theta_i)
+\mathbf{x}[k]\mathbf{x}^{H}[k]
+\mathbf{w}(\theta_i)
+\right].
+$$</p>
+<p>Using the covariance matrix</p>
+<p>$$
+\mathbf{R}
+=
+\mathbb{E}\!\left[
+\mathbf{x}[k]\mathbf{x}^{H}[k]
+\right],
+$$</p>
+<p>the filter output power becomes</p>
+<p>$$
+P(\theta_i)
+=
+\mathbf{w}^{H}(\theta_i)
+\mathbf{R}
+\mathbf{w}(\theta_i).
+$$</p>
+<p>For each steering direction, MVDR selects the weights that minimize this output power while preserving unity gain toward the tested direction:</p>
+<p>$$
+\min_{\mathbf{w}}
+\mathbf{w}^{H}\mathbf{R}\mathbf{w},
+\qquad
+\text{subject to}
+\qquad
+\mathbf{w}^{H}\mathbf{a}(\theta_i)=1.
+$$</p>
+<p>The resulting adaptive weights are</p>
+<p>$$
+\mathbf{w}_{\mathrm{MVDR}}(\theta_i)
+=
+\frac{
+\mathbf{R}^{-1}\mathbf{a}(\theta_i)
+}{
+\mathbf{a}^{H}(\theta_i)
+\mathbf{R}^{-1}
+\mathbf{a}(\theta_i)
+}.
+$$</p>
+<p>Substituting these weights into the output-power expression gives the Capon spatial spectrum:</p>
+<p>$$
+P_{\mathrm{Capon}}(\theta_i)
+=
+\frac{1}{
+\mathbf{a}^{H}(\theta_i)
+\mathbf{R}^{-1}
+\mathbf{a}(\theta_i)
+}.
+$$</p>
+<p>In practice, $\mathbf{R}$ is replaced by the sample covariance matrix $\hat{\mathbf{R}}$. Peaks in the Capon spectrum indicate directions for which the distortionless constraint can be maintained while minimizing the remaining spatial power.</p>
 </div>
 </div>
 </div>
