@@ -13095,6 +13095,7 @@ div#notebook {
 <li><a href="#doa-processing-in-the-fmcw-tdm-mimo-chain">DoA processing in the FMCW TDM-MIMO chain</a></li>
 <li><a href="#snapshot-extraction-for-covariance-estimation">Snapshot extraction for covariance estimation</a><ol>
 <li><a href="#one-snapshot-per-frame">One snapshot per frame</a></li>
+<li><a href="#range-doppler-neighboring-bins">Neighboring range and Doppler bins</a></li>
 <li><a href="#range-doppler-neighborhood">Range–Doppler neighborhood</a></li>
 <li><a href="#overlapping-subarrays">Overlapping subarrays</a></li>
 <li><a href="#comparison-of-covariance-snapshot-extraction-methods">Comparison of covariance snapshot extraction methods</a></li>
@@ -13110,7 +13111,9 @@ div#notebook {
 <p><a id="doa-processing-in-the-fmcw-tdm-mimo-chain"></a></p>
 <h2 id="DoA-processing-in-the-FMCW-TDM-MIMO-chain">DoA processing in the FMCW TDM-MIMO chain<a class="anchor-link" href="#DoA-processing-in-the-FMCW-TDM-MIMO-chain">¶</a></h2><p>The figure below shows an example of a frame-level processing chain for FMCW TDM-MIMO radar.<br/>
 It highlights where direction-of-arrival (DoA) estimation is applied after range–Doppler processing, TDM-MIMO correction, and target detection.</p>
-<p><img alt="FMCW TDM-MIMO DoA processing chain" src="../images/fmcw_mimo_doa_processing_chain.png"/></p>
+<p align="center">
+<img alt="FMCW TDM-MIMO DoA processing chain" src="../docs/images/fmcw_mimo_doa_processing_chain.png" width="95%"/>
+</p>
 <p>This is only one possible processing flow. In practical radar systems, the chain may vary depending on the signal model, detection strategy, and selected DoA algorithm.</p>
 </div>
 </div>
@@ -13134,7 +13137,9 @@ It highlights where direction-of-arrival (DoA) estimation is applied after range
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="one-snapshot-per-frame"></a></p>
 <h3 id="One-snapshot-per-frame">One snapshot per frame<a class="anchor-link" href="#One-snapshot-per-frame">¶</a></h3><p>For a detected target, the complex samples from the same Range-Doppler cell are extracted across consecutive frames. Each frame contributes one spatial snapshot across the virtual antenna channels, while the covariance matrix is updated after collecting several frames.</p>
-<p><img alt="One snapshot per frame" src="../images/snapshot_per_frame.png"/></p>
+<p align="center">
+<img alt="One snapshot per frame" src="../docs/images/snapshot_per_frame.png" width="70%"/>
+</p>
 <p>For $L$ collected frames, the sample covariance matrix is estimated as</p>
 <p>$$
 \hat{\mathbf{R}}
@@ -13148,12 +13153,35 @@ $$</p>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=c8f8f1bb"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id="range-doppler-neighboring-bins"></a></p>
+<h3 id="Neighboring-range-and-Doppler-bins">Neighboring range and Doppler bins<a class="anchor-link" href="#Neighboring-range-and-Doppler-bins">¶</a></h3><p>Snapshots can be extracted from cells adjacent to the detected Range-Doppler cell within a single frame. The selection may be performed separately along the range axis or along the Doppler axis while keeping the other coordinate fixed.</p>
+<p align="center">
+<img alt="Snapshots from neighboring range and Doppler bins" src="../docs/images/range_doppler_neighboring_bins.png" width="70%"/>
+</p>
+<p>For $L$ selected cells, the sample covariance matrix is estimated as</p>
+<p>$$
+\hat{\mathbf{R}}
+=
+\frac{1}{L}
+\sum_{\ell=0}^{L-1}
+\mathbf{x}[\ell]\mathbf{x}^{H}[\ell],
+$$</p>
+<p>where $\mathbf{x}[\ell]$ is the spatial snapshot extracted from the $\ell$-th selected range or Doppler bin.</p>
+<p>This approach enables covariance estimation within each frame. However, neighboring cells should be selected carefully to ensure that they represent the same target response rather than unrelated signal components.</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=d48654a5"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="range-doppler-neighborhood"></a></p>
 <h3 id="Range%E2%80%93Doppler-neighborhood">Range–Doppler neighborhood<a class="anchor-link" href="#Range%E2%80%93Doppler-neighborhood">¶</a></h3><p>Snapshots can be extracted from a local neighborhood around the detected Range-Doppler cell within a single frame. The neighborhood may include adjacent bins in both dimensions, or only along the range or Doppler axis.</p>
-<p><img alt="Snapshots from a Range-Doppler neighborhood" src="../images/range_doppler_neighborhood.png"/></p>
+<p align="center">
+<img alt="Snapshots from a Range-Doppler neighborhood" src="../docs/images/range_doppler_neighborhood.png" width="70%"/>
+</p>
 <p>For $L$ selected Range-Doppler cells, the sample covariance matrix is estimated as</p>
 <p>$$
 \hat{\mathbf{R}}
@@ -13172,7 +13200,9 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="overlapping-subarrays"></a></p>
 <h3 id="Overlapping-subarrays">Overlapping subarrays<a class="anchor-link" href="#Overlapping-subarrays">¶</a></h3><p>Spatial smoothing generates several snapshots from one detected Range-Doppler cell by dividing the original virtual array into shifted, overlapping subarrays. Each subarray contains a reduced number of antenna elements and contributes one spatial snapshot.</p>
-<p><img alt="Overlapping subarrays for covariance estimation" src="../images/overlapping_subarrays.png"/></p>
+<p align="center">
+<img alt="Overlapping subarrays for covariance estimation" src="../docs/images/overlapping_subarrays.png" width="80%"/>
+</p>
 <p>For $L$ overlapping subarrays, the sample covariance matrix is estimated as</p>
 <p>$$
 \hat{\mathbf{R}}
@@ -13191,9 +13221,11 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="comparison-of-covariance-snapshot-extraction-methods"></a></p>
 <h3 id="Comparison-of-covariance-snapshot-extraction-methods">Comparison of covariance snapshot extraction methods<a class="anchor-link" href="#Comparison-of-covariance-snapshot-extraction-methods">¶</a></h3><p>A rigorous comparison of snapshot-extraction methods requires a more detailed analysis across different target scenarios and processing configurations. In particular, the Range-Doppler neighborhood method may require additional cell analysis and selection to ensure that the neighboring cells contain signal contributions from the same target scene</p>
-<p>The figure below shows Bartlett, Capon MVDR, MUSIC, and ESPRIT results obtained from AWR2243 measurements. The static scene contains two corner reflectors located off boresight, around (45^\circ), with an approximate lateral separation of (2,\text{m}).</p>
+<p>The figure below shows Bartlett, Capon MVDR, MUSIC, and ESPRIT results obtained from AWR2243 measurements. The static scene contains two corner reflectors located off boresight, around $45^\circ$, with an approximate lateral separation of $2\,\text{m}$.</p>
 <p>For the <strong>one-snapshot-per-frame</strong> method, two frames are used, providing two snapshots. The <strong>Range-Doppler neighborhood</strong> method uses 15 snapshots from neighboring cells within one frame, while the <strong>overlapping-subarray</strong> method produces three snapshots from an eight-element virtual ULA using subarrays of six elements.</p>
-<p><img alt="Comparison of covariance snapshot extraction methods" src="../images/covariance_snapshot_methods.png"/></p>
+<p align="center">
+<img alt="Comparison of covariance snapshot extraction methods" src="../docs/images/covariance_snapshot_methods.png" width="100%"/>
+</p>
 <p>For this geometry, the Bartlett spectrum merges the two reflector responses into a single broad peak because its angular resolution is mainly limited by the effective array aperture.</p>
 <p>ESPRIT returns nearly identical DoA estimates for all three snapshot-extraction methods.</p>
 <p>Among the presented cases, the one-snapshot-per-frame method provides the clearest Capon MVDR response, with stronger target peaks and no pronounced parasitic peak.</p>
