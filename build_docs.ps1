@@ -40,3 +40,19 @@ foreach ($notebook in $notebooks) {
 }
 
 Write-Host "All notebook pages were generated in $outputDir"
+
+
+Get-ChildItem .\docs\*.html | ForEach-Object {
+    $content = Get-Content $_.FullName -Raw
+
+    $content = $content.Replace(
+        '../docs/images/',
+        'images/'
+    )
+
+    [System.IO.File]::WriteAllText(
+        $_.FullName,
+        $content,
+        [System.Text.UTF8Encoding]::new($false)
+    )
+}

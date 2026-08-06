@@ -4,7 +4,7 @@ Direction-of-arrival estimation for automotive FMCW MIMO radar, covering the sig
 
 The covered methods include conventional beamforming with the Spatial FFT and Bartlett beamformer, adaptive beamforming with Capon/MVDR, and subspace-based estimation with MUSIC and ESPRIT.
 
-![DoA estimation methods](images/blockdiagram.png)
+![DoA estimation methods](docs/images/blockdiagram.png)
 
 The notebooks introduce the FMCW MIMO signal model, snapshot extraction, covariance-matrix estimation and preprocessing, and the assumptions behind each DoA algorithm. Key formulas are supported by compact Python implementations, numerical examples, and practical engineering observations.
 

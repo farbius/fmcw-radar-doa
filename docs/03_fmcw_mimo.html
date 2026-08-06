@@ -13112,7 +13112,7 @@ div#notebook {
 <h2 id="DoA-processing-in-the-FMCW-TDM-MIMO-chain">DoA processing in the FMCW TDM-MIMO chain<a class="anchor-link" href="#DoA-processing-in-the-FMCW-TDM-MIMO-chain">¶</a></h2><p>The figure below shows an example of a frame-level processing chain for FMCW TDM-MIMO radar.<br/>
 It highlights where direction-of-arrival (DoA) estimation is applied after range–Doppler processing, TDM-MIMO correction, and target detection.</p>
 <p align="center">
-<img alt="FMCW TDM-MIMO DoA processing chain" src="../docs/images/fmcw_mimo_doa_processing_chain.png" width="95%"/>
+<img alt="FMCW TDM-MIMO DoA processing chain" src="images/fmcw_mimo_doa_processing_chain.png" width="95%"/>
 </p>
 <p>This is only one possible processing flow. In practical radar systems, the chain may vary depending on the signal model, detection strategy, and selected DoA algorithm.</p>
 </div>
@@ -13138,7 +13138,7 @@ It highlights where direction-of-arrival (DoA) estimation is applied after range
 <p><a id="one-snapshot-per-frame"></a></p>
 <h3 id="One-snapshot-per-frame">One snapshot per frame<a class="anchor-link" href="#One-snapshot-per-frame">¶</a></h3><p>For a detected target, the complex samples from the same Range-Doppler cell are extracted across consecutive frames. Each frame contributes one spatial snapshot across the virtual antenna channels, while the covariance matrix is updated after collecting several frames.</p>
 <p align="center">
-<img alt="One snapshot per frame" src="../docs/images/snapshot_per_frame.png" width="70%"/>
+<img alt="One snapshot per frame" src="images/snapshot_per_frame.png" width="70%"/>
 </p>
 <p>For $L$ collected frames, the sample covariance matrix is estimated as</p>
 <p>$$
@@ -13159,7 +13159,7 @@ $$</p>
 <p><a id="range-doppler-neighboring-bins"></a></p>
 <h3 id="Neighboring-range-and-Doppler-bins">Neighboring range and Doppler bins<a class="anchor-link" href="#Neighboring-range-and-Doppler-bins">¶</a></h3><p>Snapshots can be extracted from cells adjacent to the detected Range-Doppler cell within a single frame. The selection may be performed separately along the range axis or along the Doppler axis while keeping the other coordinate fixed.</p>
 <p align="center">
-<img alt="Snapshots from neighboring range and Doppler bins" src="../docs/images/range_doppler_neighboring_bins.png" width="70%"/>
+<img alt="Snapshots from neighboring range and Doppler bins" src="images/range_doppler_neighboring_bins.png" width="70%"/>
 </p>
 <p>For $L$ selected cells, the sample covariance matrix is estimated as</p>
 <p>$$
@@ -13180,7 +13180,7 @@ $$</p>
 <p><a id="range-doppler-neighborhood"></a></p>
 <h3 id="Range%E2%80%93Doppler-neighborhood">Range–Doppler neighborhood<a class="anchor-link" href="#Range%E2%80%93Doppler-neighborhood">¶</a></h3><p>Snapshots can be extracted from a local neighborhood around the detected Range-Doppler cell within a single frame. The neighborhood may include adjacent bins in both dimensions, or only along the range or Doppler axis.</p>
 <p align="center">
-<img alt="Snapshots from a Range-Doppler neighborhood" src="../docs/images/range_doppler_neighborhood.png" width="70%"/>
+<img alt="Snapshots from a Range-Doppler neighborhood" src="images/range_doppler_neighborhood.png" width="70%"/>
 </p>
 <p>For $L$ selected Range-Doppler cells, the sample covariance matrix is estimated as</p>
 <p>$$
@@ -13201,7 +13201,7 @@ $$</p>
 <p><a id="overlapping-subarrays"></a></p>
 <h3 id="Overlapping-subarrays">Overlapping subarrays<a class="anchor-link" href="#Overlapping-subarrays">¶</a></h3><p>Spatial smoothing generates several snapshots from one detected Range-Doppler cell by dividing the original virtual array into shifted, overlapping subarrays. Each subarray contains a reduced number of antenna elements and contributes one spatial snapshot.</p>
 <p align="center">
-<img alt="Overlapping subarrays for covariance estimation" src="../docs/images/overlapping_subarrays.png" width="80%"/>
+<img alt="Overlapping subarrays for covariance estimation" src="images/overlapping_subarrays.png" width="80%"/>
 </p>
 <p>For $L$ overlapping subarrays, the sample covariance matrix is estimated as</p>
 <p>$$
@@ -13224,7 +13224,7 @@ $$</p>
 <p>The figure below shows Bartlett, Capon MVDR, MUSIC, and ESPRIT results obtained from AWR2243 measurements. The static scene contains two corner reflectors located off boresight, around $45^\circ$, with an approximate lateral separation of $2\,\text{m}$.</p>
 <p>For the <strong>one-snapshot-per-frame</strong> method, two frames are used, providing two snapshots. The <strong>Range-Doppler neighborhood</strong> method uses 15 snapshots from neighboring cells within one frame, while the <strong>overlapping-subarray</strong> method produces three snapshots from an eight-element virtual ULA using subarrays of six elements.</p>
 <p align="center">
-<img alt="Comparison of covariance snapshot extraction methods" src="../docs/images/covariance_snapshot_methods.png" width="100%"/>
+<img alt="Comparison of covariance snapshot extraction methods" src="images/covariance_snapshot_methods.png" width="100%"/>
 </p>
 <p>For this geometry, the Bartlett spectrum merges the two reflector responses into a single broad peak because its angular resolution is mainly limited by the effective array aperture.</p>
 <p>ESPRIT returns nearly identical DoA estimates for all three snapshot-extraction methods.</p>
