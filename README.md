@@ -10,30 +10,13 @@ The Jupyter notebooks introduce the FMCW MIMO signal model, snapshot extraction 
 
 The theoretical foundations and algorithm implementations are validated using real measurements acquired with a Texas Instruments **AWR2243** radar. The radar is configured as a two-transmitter, four-receiver TDM MIMO system, forming an eight-element virtual uniform linear array.
 
-<p align="center">
-  <img
-    src="docs/images/awr2243_front_view.jpg"
-    alt="AWR2243 radar front view"
-    width="40%">
-</p>
-
 The validation datasets were collected in two measurement campaigns:
+
 
 ### 1. DoA estimation with two static corner reflectors
 
 The first campaign evaluates angular resolution in controlled broadside and off-boresight scenarios using two static corner reflectors. The corresponding workshop and dataset are available [here](...) (coming soon).
 
-<p align="center">
-  <img
-    src="docs/images/awr2243_back_view.jpg"
-    alt="AWR2243 broadside validation scene"
-    width="40%">
-  &nbsp;&nbsp;
-  <img
-    src="docs/images/awr2243_off_boresight.jpg"
-    alt="AWR2243 off-boresight validation scene"
-    width="40%">
-</p>
 
 ### 2. DoA estimation in a dynamic street scene
 
