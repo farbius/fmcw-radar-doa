@@ -8,10 +8,10 @@ The methods are organized into three groups: conventional beamforming with the S
 
 The Jupyter notebooks introduce the FMCW MIMO signal model, snapshot extraction strategies, covariance-matrix estimation and preprocessing, and the assumptions behind each DoA algorithm. Key formulas are complemented by compact Python implementations, numerical examples, and practical engineering observations.
 
-The theoretical foundations and algorithm implementations are validated using real measurements acquired with a Texas Instruments **AWR2243** radar. The radar is configured as a two-transmitter, four-receiver TDM MIMO system, forming an eight-element virtual uniform linear array.
+
+The theoretical foundations and algorithm implementations are validated using real measurements acquired with a Texas Instruments **AWR2243** radar. The radar is configured as a two-transmitter, four-receiver TDM MIMO system, forming an eight-element virtual uniform linear array. 
 
 The validation datasets were collected in two measurement campaigns:
-
 
 ### 1. DoA estimation with two static corner reflectors
 
