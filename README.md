@@ -58,6 +58,8 @@ The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and i
    [Read chapter](https://farbius.github.io/fmcw-radar-doa/06_capon_mvdr.html) ·
    [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/06_capon_mvdr.ipynb)
 
+   Capon/MVDR beamformer fundamentals and performance analysis, including covariance preprocessing, angular resolution, and sensitivity to array-model mismatch.
+
 7. **MUSIC** ·
    [Read chapter](https://farbius.github.io/fmcw-radar-doa/07_music.html) ·
    [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/07_music.ipynb)
