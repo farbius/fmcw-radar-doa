@@ -64,6 +64,8 @@ The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and i
    [Read chapter](https://farbius.github.io/fmcw-radar-doa/07_music.html) ·
    [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/07_music.ipynb)
 
+   MUSIC fundamentals and performance analysis, including subspace decomposition, angular resolution, DoA estimation accuracy, and sensitivity to array-model mismatch.
+
 8. **ESPRIT** ·
    [Read chapter](https://farbius.github.io/fmcw-radar-doa/08_esprit.html) ·
    [View notebook](https://github.com/farbius/fmcw-radar-doa/blob/main/notebooks/08_esprit.ipynb)
