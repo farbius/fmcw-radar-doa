@@ -14035,16 +14035,16 @@ $$</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="validation-results-with-awr2243"></a></p>
-<h3 id="Validation-Results-with-AWR2243">Validation Results with AWR2243<a class="anchor-link" href="#Validation-Results-with-AWR2243">¶</a></h3><p>The MUSIC implementation is validated using real measurements acquired with the <strong>AWR2243</strong> radar in two-target broadside and off-boresight scenarios. For comparison, the MUSIC pseudospectrum is shown together with the Capon/MVDR spectrum using the same covariance snapshots and Forward–Backward averaging.</p>
+<h3 id="Validation-Results-with-AWR2243">Validation Results with AWR2243<a class="anchor-link" href="#Validation-Results-with-AWR2243">¶</a></h3><p>The MUSIC implementation is validated using real measurements acquired with the <strong>AWR2243</strong> radar in two-target broadside and off-boresight scenarios. For comparison, MUSIC pseudospectrum is shown together with the Capon/MVDR and conventional FFT beamformer responses using the same covariance snapshots.</p>
 <p align="center">
 <img alt="Capon and MUSIC comparison for the broadside scenario" src="images/mus_vs_cap_broadside.png" width="95%"/>
 </p>
 <p align="center">
 <img alt="Capon and MUSIC comparison for the off-boresight scenario" src="images/mus_vs_cap_off_boresight.png" width="95%"/>
 </p>
-<p>Both Capon/MVDR and MUSIC produce sharp, narrow peaks at nearly the same target directions in the broadside and off-boresight measurements.</p>
-<p>The main difference is visible away from the target peaks. The MUSIC pseudospectrum has a more uniform background level, whereas the Capon/MVDR spectrum shows stronger variation and additional structure across the scan region.</p>
-<p>Despite their different formulations, both methods provide consistent DoA estimates and clearly resolve the two corner reflectors in both measurement scenarios.</p>
+<p>According to the Rayleigh resolution criterion, the theoretical angular resolution of the FFT beamformer is approximately $14.84^\circ$ for the broadside scenario and $20.76^\circ$ for the off-boresight scenario, corresponding to lateral separations of approximately $1.8$ m and $2.5$ m, respectively.</p>
+<p>In the measurements, the corner reflectors are separated by only $1.25$ m in the broadside case and $2.0$ m in the off-boresight case. Both separations are therefore below the corresponding theoretical FFT resolution limits.</p>
+<p>Despite this, MUSIC and Capon/MVDR provide consistent DoA estimates and clearly resolve the two targets, while the conventional FFT beamformer cannot explicitly separate them.</p>
 </div>
 </div>
 </div>

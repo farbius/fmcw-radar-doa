@@ -79,7 +79,9 @@ The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and i
 1. Van Trees, H. L., *Optimum Array Processing: Part IV of Detection, Estimation, and Modulation Theory*. New York: John Wiley & Sons, 2002.
 2. Wirth, W.-D., *Radar Techniques Using Array Antennas*, 2nd ed. London: Institution of Engineering and Technology, 2013.  
 3. Bergin, J. S., and Guerci, J. R., *MIMO Radar: Theory and Application*. Boston, MA: Artech House, 2018.
-
+4. Wen, D., Yi, H., Zhang, W., and Xu, H., “2D-Unitary ESPRIT Based Multi-Target Joint Range and Velocity Estimation Algorithm for FMCW Radar,” *Applied Sciences*, vol. 13, no. 18, art. 10448, 2023. doi: 10.3390/app131810448.
+5. Kim, B.-S., Jin, Y., Lee, J., and Kim, S., “FMCW Radar Estimation Algorithm with High Resolution and Low Complexity Based on Reduced Search Area,” *Sensors*, vol. 22, no. 3, art. 1202, 2022. doi: 10.3390/s22031202.
+6. Oh, D., and Lee, J.-H., “Low-Complexity Range-Azimuth FMCW Radar Sensor Using Joint Angle and Delay Estimation Without SVD and EVD,” *IEEE Sensors Journal*, vol. 15, no. 9, pp. 4799–4811, Sep. 2015. doi: 10.1109/JSEN.2015.2428814.
 
 
 ### helpers
