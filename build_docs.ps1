@@ -11,6 +11,17 @@ $notebooks = @(
     "08_esprit.ipynb"
 )
 
+$titles = @{
+    "01_signal_model.html"       = "Signal Model"
+    "02_covariance_matrix.html"  = "Covariance Matrix"
+    "03_fmcw_mimo.html"          = "FMCW MIMO DoA Processing"
+    "04_fft_beamformer.html"     = "FFT Beamformer"
+    "05_bartlett.html"           = "Bartlett Beamformer"
+    "06_capon_mvdr.html"         = "Capon / MVDR Beamformer"
+    "07_music.html"              = "MUSIC"
+    "08_esprit.html"             = "ESPRIT"
+}
+
 $inputDir = ".\notebooks"
 $outputDir = ".\docs"
 
@@ -43,12 +54,24 @@ Write-Host "All notebook pages were generated in $outputDir"
 
 
 Get-ChildItem .\docs\*.html | ForEach-Object {
+
     $content = Get-Content $_.FullName -Raw
 
+    # Fix published image paths
     $content = $content.Replace(
         '../docs/images/',
         'images/'
     )
+
+    # Set browser tab title
+    if ($titles.ContainsKey($_.Name)) {
+
+        $pageTitle = $titles[$_.Name]
+
+        $content = $content -replace `
+            '<title>.*?</title>', `
+            "<title>$pageTitle</title>"
+    }
 
     [System.IO.File]::WriteAllText(
         $_.FullName,
