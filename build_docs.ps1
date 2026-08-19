@@ -8,18 +8,20 @@ $notebooks = @(
     "05_bartlett.ipynb",
     "06_capon_mvdr.ipynb",
     "07_music.ipynb",
-    "08_esprit.ipynb"
+    "08_esprit.ipynb",
+    "index.ipynb"
 )
 
 $titles = @{
-    "01_signal_model.html"       = "Signal Model"
-    "02_covariance_matrix.html"  = "Covariance Matrix"
-    "03_fmcw_mimo.html"          = "FMCW MIMO DoA Processing"
-    "04_fft_beamformer.html"     = "FFT Beamformer"
-    "05_bartlett.html"           = "Bartlett Beamformer"
-    "06_capon_mvdr.html"         = "Capon / MVDR Beamformer"
-    "07_music.html"              = "MUSIC"
-    "08_esprit.html"             = "ESPRIT"
+    "01_signal_model.html"          = "Signal Model"
+    "02_covariance_matrix.html"     = "Covariance Matrix"
+    "03_fmcw_mimo.html"             = "FMCW MIMO DoA Processing"
+    "04_fft_beamformer.html"        = "FFT Beamformer"
+    "05_bartlett.html"              = "Bartlett Beamformer"
+    "06_capon_mvdr.html"            = "Capon / MVDR Beamformer"
+    "07_music.html"                 = "MUSIC"
+    "08_esprit.html"                = "ESPRIT"
+    "index.html"                    = "index"
 }
 
 $inputDir = ".\notebooks"
