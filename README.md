@@ -15,7 +15,7 @@ The validation datasets are provided as part of the workshop:
 
 ### DoA estimation with two static corner reflectors
 
-This workshop evaluates angular resolution in controlled broadside and off-boresight scenarios using static corner reflectors. The corresponding workshop and dataset are available [here](...) (coming soon).
+This workshop evaluates angular resolution in controlled broadside and off-boresight scenarios using static corner reflectors. The corresponding workshop and dataset are available [here](https://www.fpga-radar.com/doa-estimation-for-automotive-fmcw-radar).
 
 
 ## Contents
