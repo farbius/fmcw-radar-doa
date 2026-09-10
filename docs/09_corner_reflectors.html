@@ -13105,13 +13105,13 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="measurement-setup"></a></p>
 <h2 id="Measurement-Setup">Measurement Setup<a class="anchor-link" href="#Measurement-Setup">¶</a></h2><p>The validation was performed using an <a href="https://www.ti.com/tool/AWR2243BOOST">AWR2243 TI mmWave sensor</a> in TDM-MIMO mode. Two transmitters and four receivers were used to form an 8-element virtual RX array.</p>
-<p align="center">
-<img alt="AWR2243 front layout" src="images/awr2243_antennas.png" style="margin-right: 20px;" width="30%"/>
-<img alt="AWR2243 setup front view" src="images/awr2243_front_view.webp" width="30%"/>
-</p>
+<div style="display: flex; justify-content: center; align-items: center; gap: 1px;">
+<img alt="AWR2243 front layout" src="images/awr2243_antennas.png" style="height: 320px; width: auto;"/>
+<p><img alt="AWR2243 setup front view" src="images/awr2243_front_view.webp" style="height: 320px; width: auto;"/></p>
+</div>
 <p>The measurement setup used two corner reflectors with different sizes. The difference in reflector size helps distinguish the corresponding peaks in the range-angle results.</p>
 <p align="center">
-<img alt="Corner Reflectors" src="images/corner_reflectors.webp" width="30%"/>
+<img alt="Corner Reflectors" src="images/corner_reflectors.webp" width="50%"/>
 </p>
 <p>Measurements were collected in outdoor conditions to reduce multipath reflections compared to an indoor environment.</p>
 <p>Radar calibration was done with a single corner reflector at broadside position with verification with the reflector at off-boresight.</p>
@@ -13123,27 +13123,27 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="broadside-scenario"></a></p>
 <h2 id="Broadside-Scenario">Broadside Scenario<a class="anchor-link" href="#Broadside-Scenario">¶</a></h2><p>Two corner reflectors were placed in front of the radar in the broadside direction. The target range was approximately 7 m. The lateral separation between the reflectors was changed from 0 m, corresponding to a single visible reflector, up to 3.0 m with an approximate step of 0.25 m. For this geometry, the theoretical Spatial FFT angular resolution is approximately 14.84°. At 7 m range, this corresponds to about 1.8 m lateral separation.</p>
-<p align="center">
-<img alt="AWR2243 front layout" src="images/awr2243_back_view.webp" style="margin-right: 20px;" width="30%"/>
-<img alt="AWR2243 broadside geometry" src="images/broadside_geometry.png" width="17%"/>
-</p>
+<div style="display: flex; justify-content: center; align-items: center; gap: 2px;">
+<img alt="AWR2243 front layout" src="images/awr2243_back_view.webp" style="height: 400px; width: auto;"/>
+<p><img alt="AWR2243 broadside geometry" src="images/broadside_geometry.png" style="height: 400px; width: auto;"/></p>
+</div>
 <h3 id="DoA-estimation-results-for-representative-cases"><strong>DoA estimation results for representative cases</strong><a class="anchor-link" href="#DoA-estimation-results-for-representative-cases">¶</a></h3><ul>
 <li>single corner reflector</li>
 </ul>
 <p align="center">
-<img alt="Single Corner Reflector Broadside" src="images/broadside_0p0m.png" width="50%"/>
+<img alt="Single Corner Reflector Broadside" src="images/broadside_0p0m.png" width="100%"/>
 </p>
 <ul>
 <li>two reflectors with 1.5 m lateral separation</li>
 </ul>
 <p align="center">
-<img alt="Two Corner Reflectors Broadside 1.5 m separation" src="images/broadside_1p5m.png" width="50%"/>
+<img alt="Two Corner Reflectors Broadside 1.5 m separation" src="images/broadside_1p5m.png" width="100%"/>
 </p>
 <ul>
 <li>two reflectors with 3.0 m lateral separation</li>
 </ul>
 <p align="center">
-<img alt="Two Corner Reflectors Broadside 3.0 m separation" src="images/broadside_3p0m.png" width="50%"/>
+<img alt="Two Corner Reflectors Broadside 3.0 m separation" src="images/broadside_3p0m.png" width="100%"/>
 </p>
 <p><strong>Observations</strong>: Capon MVDR, MUSIC and ESPRIT provide clean separable peaks and consistent angle estimates across the evaluated broadside cases. Spatial FFT and Bartlett have wider spectra and either fail to resolve close targets or provide less accurate peak positions. The 1.5 m case is below the theoretical Spatial FFT resolution limit. The 2.0 m case is close to the limit, while the 3.0 m case gives clearer separation for all methods.</p>
 </div>
@@ -13154,27 +13154,27 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="off-boresight-scenario"></a></p>
 <h2 id="Off-Boresight-Scenario">Off-Boresight Scenario<a class="anchor-link" href="#Off-Boresight-Scenario">¶</a></h2><p>Two corner reflectors were measured in an off-boresight configuration at approximately 6.83 m range. One reflector was fixed at approximately 44.14° relative to radar boresight. The second reflector was shifted away from the fixed reflector from 0 m to 3.0 m with an approximate step of 0.25 m. For this geometry, the theoretical Spatial FFT angular resolution is approximately 20.76°, corresponding to about 2.491 m lateral separation at 6.83 m range.</p>
-<p align="center">
-<img alt="AWR2243 front layout" src="images/awr2243_off_boresight.webp" style="margin-right: 20px;" width="30%"/>
-<img alt="AWR2243 off-boresight geometry" src="images/off_boresight_geometry.png" width="17%"/>
-</p>
+<div style="display: flex; justify-content: center; align-items: center; gap: 2px;">
+<img alt="AWR2243 front layout" src="images/awr2243_off_boresight.webp" style="height: 400px; width: auto;"/>
+<p><img alt="AWR2243 off-boresight geometry" src="images/off_boresight_geometry.png" style="height: 400px; width: auto;"/></p>
+</div>
 <h3 id="DoA-estimation-results-for-representative-cases"><strong>DoA estimation results for representative cases</strong><a class="anchor-link" href="#DoA-estimation-results-for-representative-cases">¶</a></h3><ul>
 <li>single corner reflector</li>
 </ul>
 <p align="center">
-<img alt="Single Corner Reflector off-boresight" src="images/off_boresight_0p0m.png" width="50%"/>
+<img alt="Single Corner Reflector off-boresight" src="images/off_boresight_0p0m.png" width="100%"/>
 </p>
 <ul>
 <li>two reflectors with 1.75 m lateral separation</li>
 </ul>
 <p align="center">
-<img alt="Two Corner Reflectors off-boresight 1.75 m separation" src="images/off_boresight_1p75m.png" width="50%"/>
+<img alt="Two Corner Reflectors off-boresight 1.75 m separation" src="images/off_boresight_1p75m.png" width="100%"/>
 </p>
 <ul>
 <li>two reflectors with 2.0 m lateral separation</li>
 </ul>
 <p align="center">
-<img alt="Two Corner Reflectors off-boresight 2.0 m separation" src="images/off_boresight_2p0m.png" width="50%"/>
+<img alt="Two Corner Reflectors off-boresight 2.0 m separation" src="images/off_boresight_2p0m.png" width="100%"/>
 </p>
 <p><strong>Observations</strong>: Capon MVDR, MUSIC and ESPRIT provide consistent DoA estimates across the evaluated off-boresight cases, with almost no discrepancy between them. Capon, MUSIC, ESPRIT clearly separate two targets already at 1.75 m lateral separation. Spatial FFT and Bartlett produce distinguishable two-peak results only around 2.5 m, which is consistent with the theoretical FFT resolution of approximately 2.49 m for this geometry.</p>
 </div>
