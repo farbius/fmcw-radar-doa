@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Signal Model</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
+<title>Corner Reflectors Validation</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script type="module">
   import mermaid from 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs';
   
   mermaid.initialize({ startOnLoad: true });
@@ -13088,189 +13088,103 @@ div#notebook {
 <main>
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=868b9d08"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=cf30c6d9"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Contents">Contents<a class="anchor-link" href="#Contents">¶</a></h2><ol>
-<li><a href="#snapshot-model">Snapshot Model</a></li>
-<li><a href="#steering-vector">Steering Vector</a></li>
+<li><a href="#measurement-setup">Measurement Setup</a></li>
+<li><a href="#broadside-scenario">Broadside Scenario</a></li>
+<li><a href="#off-boresight-scenario">Off-Boresight Scenario</a></li>
+<li><a href="#results-summary">Results Summary</a></li>
 </ol>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=ded46e01"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=9d6d97ab"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The signal model is a mathematical description of the signals received across a phased array. It accounts for the source directions, array geometry, relative phase shifts between antenna elements, source amplitudes, interference, and noise. For far-field sources, the incident wavefront is commonly approximated as a planar wave.</p>
-<p>The signal model provides the foundation for understanding and deriving direction-of-arrival (DoA) estimation methods. It connects the physical propagation geometry with the complex samples measured by the array and explains how source direction is encoded in the spatial phase progression.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=d83567fc"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a id="snapshot-model"></a></p>
-<h2 id="Snapshot-Model">Snapshot Model<a class="anchor-link" href="#Snapshot-Model">¶</a></h2><p>A <strong>snapshot</strong> is the vector of complex samples measured across all antenna elements at one observation instant.</p>
-<p>For an array with $M$ antenna elements and $K$ incident sources, one snapshot is modeled as</p>
-<p>$$
-\mathbf{x} = \mathbf{A}\mathbf{s} + \mathbf{n}.
-$$</p>
-<p>where</p>
-<ul>
-<li>$\mathbf{x} \in \mathbb{C}^{M \times 1}$ — received snapshot vector across the array,</li>
-<li>$\mathbf{A} \in \mathbb{C}^{M \times K}$ — array manifold matrix,</li>
-<li>$\mathbf{s} \in \mathbb{C}^{K \times 1}$ — complex source signal vector,</li>
-<li>$\mathbf{n} \in \mathbb{C}^{M \times 1}$ — additive noise vector.</li>
-</ul>
-<p>The array manifold matrix is formed from the steering vectors of all incident sources:</p>
-<p>$$
-\mathbf{A}
-=
-\begin{bmatrix}
-\mathbf{a}(\theta_1) &amp;
-\mathbf{a}(\theta_2) &amp;
-\cdots &amp;
-\mathbf{a}(\theta_K)
-\end{bmatrix}.
-$$</p>
-<p>Each column $\mathbf{a}(\theta_k)$ describes the phase progression across the array for a source arriving from direction $\theta_k$.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=1d4cff94">
-<div class="input">
-<div class="prompt input_prompt">In [1]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="n">M</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">angles_deg</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
-<span class="n">d_over_lambda</span> <span class="o">=</span> <span class="mf">0.5</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-
-<span class="c1"># Array manifold matrix A</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">d_over_lambda</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
-    <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">angles_deg</span>
-<span class="p">])</span>
-
-<span class="c1"># Source vector s and noise n</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">40</span><span class="p">))])</span>
-
-<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
-    <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="c1"># Snapshot</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">s</span> <span class="o">+</span> <span class="n">n</span>
-
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"A =</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">s ="</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">n ="</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">x = A @ s + n = "</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>A =
- [[ 1.+0.j  1.+0.j]
- [ 1.+0.j  0.-1.j]
- [ 1.+0.j -1.-0.j]
- [ 1.+0.j -0.+1.j]
- [ 1.+0.j  1.+0.j]
- [ 1.+0.j  0.-1.j]
- [ 1.+0.j -1.-0.j]
- [ 1.+0.j -0.+1.j]]
-
-s = [1.  +0.j   0.54+0.45j]
-
-n = [ 0.  -0.03j  0.02-0.04j -0.02+0.03j -0.06+0.03j -0.03+0.01j -0.07-0.07j
-  0.  -0.j    0.09+0.05j]
-
-x = A @ s + n =  [1.54+0.42j 1.47-0.58j 0.44-0.42j 0.49+0.56j 1.5 +0.46j 1.38-0.6j
- 0.47-0.45j 0.64+0.59j]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=1c9b3edf"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a id="steering-vector"></a></p>
-<h2 id="Steering-Vector">Steering Vector<a class="anchor-link" href="#Steering-Vector">¶</a></h2><p>A <strong>steering vector</strong> describes the complex response of the array to a planar wave arriving from a given direction. Its elements represent the relative phase shifts, and optionally amplitude variations, observed across the antenna elements for that direction.</p>
-<p>A <strong>uniform linear array (ULA)</strong> consists of equally spaced receiving elements arranged along a straight line.</p>
-<p>The distance between adjacent elements is the <strong>inter-element spacing</strong> $d$. The direction of arrival (DoA), denoted by $\theta$, is defined as the angle between the target direction and the normal to the array axis, also called the array broadside.</p>
-<p>For a far-field target, the reflected signal is approximated as a planar wave. Because the wavefront reaches the antenna elements at different positions, each virtual channel observes a relative propagation delay and therefore a corresponding phase shift.</p>
-<p>These phase shifts form the steering vector. For a ULA, the phase progression is approximately linear across the array, and its slope is determined by the target direction, the wavelength, and the inter-element spacing.</p>
+<p><a id="measurement-setup"></a></p>
+<h2 id="Measurement-Setup">Measurement Setup<a class="anchor-link" href="#Measurement-Setup">¶</a></h2><p>The validation was performed using an <a href="https://www.ti.com/tool/AWR2243BOOST">AWR2243 TI mmWave sensor</a> in TDM-MIMO mode. Two transmitters and four receivers were used to form an 8-element virtual RX array.</p>
 <p align="center">
-<img alt="ULA with a target" src="images/ULA.png" width="70%"/>
+<img alt="AWR2243 front layout" src="images/awr2243_antennas.png" style="margin-right: 20px;" width="30%"/>
+<img alt="AWR2243 setup front view" src="images/awr2243_front_view.webp" width="30%"/>
 </p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=ecd4e2a9"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>For a ULA with inter-element spacing $d$, the steering vector for a plane wave arriving from angle $\theta$ is</p>
-<p>$$
-\mathbf{a}(\theta)
-=
-\begin{bmatrix}
-1 \\
-e^{-jkd\sin\theta} \\
-e^{-j2kd\sin\theta} \\
-\vdots \\
-e^{-j(M-1)kd\sin\theta}
-\end{bmatrix},
-$$</p>
-<p>where</p>
-<ul>
-<li>$M$ — number of antenna elements,</li>
-<li>$d$ — spacing between adjacent elements,</li>
-<li>$\theta$ — direction of arrival measured from broadside,</li>
-<li>$k = \dfrac{2\pi}{\lambda}$ — wavenumber,</li>
-<li>$\lambda$ — wavelength,</li>
-<li>$j = \sqrt{-1}$ — imaginary unit.</li>
-</ul>
-<p>Equivalently, the $m$-th steering-vector entry is</p>
-<p>$$
-[\mathbf{a}(\theta)]_m = e^{-jmkd\sin\theta},
-\qquad m = 0,1,\ldots,M-1.
-$$</p>
-<p>For half-wavelength spacing, $d = \lambda/2$, the phase increment between adjacent elements becomes</p>
-<p>$$
-\Delta \phi = -\pi \sin\theta.
-$$</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=a8485dc7"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The plots show measured snapshots acquired with the AWR2243 radar for a single corner reflector placed approximately at $0^\circ$ broadside and $45^\circ$ off boresight.</p>
+<p>The measurement setup used two corner reflectors with different sizes. The difference in reflector size helps distinguish the corresponding peaks in the range-angle results.</p>
 <p align="center">
-<img alt="Measured AWR2243 snapshots for broadside and off-boresight corner reflectors" src="images/snapshot.png" width="90%"/>
+<img alt="Corner Reflectors" src="images/corner_reflectors.webp" width="30%"/>
 </p>
+<p>Measurements were collected in outdoor conditions to reduce multipath reflections compared to an indoor environment.</p>
+<p>Radar calibration was done with a single corner reflector at broadside position with verification with the reflector at off-boresight.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered" id="cell-id=60e85033"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=fc2ed272"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The I/Q components illustrate how the complex array response changes across the virtual channels. For the broadside reflector, the channel phases remain approximately aligned, while the off-boresight reflector produces a systematic rotation of the complex samples across the array.</p>
-<p>The calibrated and unwrapped phase makes this spatial behavior more explicit. The broadside target produces a nearly constant phase progression and therefore a fitted slope close to zero. The off-boresight target produces an approximately linear phase ramp. The slope of this ramp is determined by the array geometry and is directly related to the target DoA.</p>
+<p><a id="broadside-scenario"></a></p>
+<h2 id="Broadside-Scenario">Broadside Scenario<a class="anchor-link" href="#Broadside-Scenario">¶</a></h2><p>Two corner reflectors were placed in front of the radar in the broadside direction. The target range was approximately 7 m. The lateral separation between the reflectors was changed from 0 m, corresponding to a single visible reflector, up to 3.0 m with an approximate step of 0.25 m. For this geometry, the theoretical Spatial FFT angular resolution is approximately 14.84°. At 7 m range, this corresponds to about 1.8 m lateral separation.</p>
+<p align="center">
+<img alt="AWR2243 front layout" src="images/awr2243_back_view.webp" style="margin-right: 20px;" width="30%"/>
+<img alt="AWR2243 broadside geometry" src="images/broadside_geometry.png" width="17%"/>
+</p>
+<h3 id="DoA-estimation-results-for-representative-cases"><strong>DoA estimation results for representative cases</strong><a class="anchor-link" href="#DoA-estimation-results-for-representative-cases">¶</a></h3><ul>
+<li>single corner reflector</li>
+</ul>
+<p align="center">
+<img alt="Single Corner Reflector Broadside" src="images/broadside_0p0m.png" width="50%"/>
+</p>
+<ul>
+<li>two reflectors with 1.5 m lateral separation</li>
+</ul>
+<p align="center">
+<img alt="Two Corner Reflectors Broadside 1.5 m separation" src="images/broadside_1p5m.png" width="50%"/>
+</p>
+<ul>
+<li>two reflectors with 3.0 m lateral separation</li>
+</ul>
+<p align="center">
+<img alt="Two Corner Reflectors Broadside 3.0 m separation" src="images/broadside_3p0m.png" width="50%"/>
+</p>
+<p><strong>Observations</strong>: Capon MVDR, MUSIC and ESPRIT provide clean separable peaks and consistent angle estimates across the evaluated broadside cases. Spatial FFT and Bartlett have wider spectra and either fail to resolve close targets or provide less accurate peak positions. The 1.5 m case is below the theoretical Spatial FFT resolution limit. The 2.0 m case is close to the limit, while the 3.0 m case gives clearer separation for all methods.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=e85ff96b"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id="off-boresight-scenario"></a></p>
+<h2 id="Off-Boresight-Scenario">Off-Boresight Scenario<a class="anchor-link" href="#Off-Boresight-Scenario">¶</a></h2><p>Two corner reflectors were measured in an off-boresight configuration at approximately 6.83 m range. One reflector was fixed at approximately 44.14° relative to radar boresight. The second reflector was shifted away from the fixed reflector from 0 m to 3.0 m with an approximate step of 0.25 m. For this geometry, the theoretical Spatial FFT angular resolution is approximately 20.76°, corresponding to about 2.491 m lateral separation at 6.83 m range.</p>
+<p align="center">
+<img alt="AWR2243 front layout" src="images/awr2243_off_boresight.webp" style="margin-right: 20px;" width="30%"/>
+<img alt="AWR2243 off-boresight geometry" src="images/off_boresight_geometry.png" width="17%"/>
+</p>
+<h3 id="DoA-estimation-results-for-representative-cases"><strong>DoA estimation results for representative cases</strong><a class="anchor-link" href="#DoA-estimation-results-for-representative-cases">¶</a></h3><ul>
+<li>single corner reflector</li>
+</ul>
+<p align="center">
+<img alt="Single Corner Reflector off-boresight" src="images/off_boresight_0p0m.png" width="50%"/>
+</p>
+<ul>
+<li>two reflectors with 1.75 m lateral separation</li>
+</ul>
+<p align="center">
+<img alt="Two Corner Reflectors off-boresight 1.75 m separation" src="images/off_boresight_1p75m.png" width="50%"/>
+</p>
+<ul>
+<li>two reflectors with 2.0 m lateral separation</li>
+</ul>
+<p align="center">
+<img alt="Two Corner Reflectors off-boresight 2.0 m separation" src="images/off_boresight_2p0m.png" width="50%"/>
+</p>
+<p><strong>Observations</strong>: Capon MVDR, MUSIC and ESPRIT provide consistent DoA estimates across the evaluated off-boresight cases, with almost no discrepancy between them. Capon, MUSIC, ESPRIT clearly separate two targets already at 1.75 m lateral separation. Spatial FFT and Bartlett produce distinguishable two-peak results only around 2.5 m, which is consistent with the theoretical FFT resolution of approximately 2.49 m for this geometry.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=e3cd93a6"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id="results-summary"></a></p>
+<h2 id="Results-Summary">Results Summary<a class="anchor-link" href="#Results-Summary">¶</a></h2><p>Spatial FFT and Bartlett are useful baseline methods, but their resolution is limited by the virtual array aperture. They show wider spectra and may fail to separate close targets. Adaptive Capon MVDR and super-resolution MUSIC and ESPRIT provide cleaner peaks, better target separation, and consistent DoA estimates in both broadside and off-boresight scenarios. The experimental results are consistent with the theoretical FFT resolution limits and demonstrate the advantage of adaptive/subspace-based DoA estimation methods.</p>
 </div>
 </div>
 </div>
