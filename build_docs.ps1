@@ -9,6 +9,8 @@ $notebooks = @(
     "06_capon_mvdr.ipynb",
     "07_music.ipynb",
     "08_esprit.ipynb",
+    "09_corner_reflectors.ipynb",
+    "10_street_scene.ipynb",
     "index.ipynb"
 )
 
@@ -21,6 +23,8 @@ $titles = @{
     "06_capon_mvdr.html"            = "Capon / MVDR Beamformer"
     "07_music.html"                 = "MUSIC"
     "08_esprit.html"                = "ESPRIT"
+    "09_corner_reflectors.html"     = "Corner Reflectors Validation"
+    "10_street_scene.html"          = "Street Scene Validation"
     "index.html"                    = "index"
 }
 

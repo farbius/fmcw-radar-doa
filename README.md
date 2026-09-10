@@ -72,6 +72,9 @@ The below chapters are rendered via the nbviewer at nbviewer.jupyter.org/, and i
 
    ESPRIT LS (Least-Squares) and TLS (Total Least-Squares) fundamentals and performance analysis, including probability of resolution, DoA estimation accuracy, and validation on **AWR2243**.
 
+9. **Experimental Validation of DoA Algorithms**
+   - [9.1 Corner Reflector Scenario](https://farbius.github.io/fmcw-radar-doa/09_corner_reflectors.html)
+   - [9.2 Street Scene Scenario](https://farbius.github.io/fmcw-radar-doa/10_street_scene.html)
 
 
 ### References
